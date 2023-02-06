@@ -94,9 +94,10 @@ app.put("/todos/:todoId/", async (req, res) => {
       putSQLQuery = `UPDATE TODO  set priority='${priority}'  where id=${todoId}`;
       statement = "Priority Updated";
     }
-    if (todoCheck)
+    if (todoCheck) {
       putSQLQuery = `UPDATE TODO  set todo='${todo}'  where id=${todoId}`;
-    statement = "Todo Updated";
+      statement = "Todo Updated";
+    }
   }
 
   await db.run(putSQLQuery);
